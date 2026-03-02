@@ -92,15 +92,55 @@
             transition: font-size 0.2s; /* Hiệu ứng phóng to thu nhỏ mượt mà */
         }
 
-        .top-toolbar {
-            position: fixed; top: 0; left: 0; width: 100%;
-            background-color: #333333 !important;
-            border-bottom: 2px solid #1a1a1a;
-            padding: 8px 5px;
-            display: flex; flex-direction: column; gap: 8px; /* Ép các nút xếp thành 2 dòng */
-            z-index: 1000; box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-           font-family: sans-serif; box-sizing: border-box;
-        }
+/* Thanh menu tổng quát: Thu hẹp chiều cao */
+.top-toolbar {
+    position: relative; /* Giữ nguyên để không đè lên chữ */
+    width: 100%;
+    background-color: #222;
+    padding: 5px 0; /* Giảm đáng kể khoảng cách trên dưới */
+    z-index: 10;
+}
+
+/* Các dòng menu: Sát lại gần nhau hơn */
+.toolbar-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; 
+    margin-bottom: 3px; /* Giảm khoảng cách giữa dòng 1 và dòng 2 */
+}
+
+/* Thu nhỏ các nút bấm */
+.toolbar-row button {
+    padding: 5px 10px; /* Nút dẹt hơn */
+    font-size: 13px;    /* Chữ nhỏ lại một chút */
+    min-width: auto;   /* Bỏ giới hạn độ rộng */
+}
+
+/* Thu nhỏ các ô chọn (Mục lục, Phân mục) */
+#chapter-select, #section-select {
+    height: 30px;      /* Chiều cao thấp xuống */
+    font-size: 13px;
+    padding: 2px 5px;
+}
+
+/* Tối ưu riêng cho điện thoại để không bị vỡ hàng */
+@media (max-width: 600px) {
+    .toolbar-row {
+        padding: 0 5px;
+    }
+    
+    .toolbar-row button {
+        flex: 0 1 auto; /* Nút chỉ to vừa đủ chứa chữ */
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    #chapter-select, #section-select {
+        flex: 1; /* Ô chọn chiếm phần không gian còn lại */
+        height: 32px;
+    }
+}
 
 /* 1. Ép tất cả các phần tử trong mỗi dòng (row) tụ lại ở chính giữa */
 .toolbar-row {
@@ -1062,6 +1102,7 @@
         Bản dịch thuộc về PHANTOM
     </div>
 </body>
+
 
 
 </html>
