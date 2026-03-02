@@ -92,70 +92,30 @@
             transition: font-size 0.2s; /* Hiệu ứng phóng to thu nhỏ mượt mà */
         }
 
-/* Thanh menu tổng quát: Thu hẹp chiều cao */
-.top-toolbar {
-    position: relative; /* Giữ nguyên để không đè lên chữ */
-    width: 100%;
-    background-color: #222;
-    padding: 5px 0; /* Giảm đáng kể khoảng cách trên dưới */
-    z-index: 10;
-}
-
-/* Các dòng menu: Sát lại gần nhau hơn */
-.toolbar-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px; 
-    margin-bottom: 3px; /* Giảm khoảng cách giữa dòng 1 và dòng 2 */
-}
-
-/* Thu nhỏ các nút bấm */
-.toolbar-row button {
-    padding: 5px 10px; /* Nút dẹt hơn */
-    font-size: 13px;    /* Chữ nhỏ lại một chút */
-    min-width: auto;   /* Bỏ giới hạn độ rộng */
-}
-
-/* Thu nhỏ các ô chọn (Mục lục, Phân mục) */
-#chapter-select, #section-select {
-    height: 30px;      /* Chiều cao thấp xuống */
-    font-size: 13px;
-    padding: 2px 5px;
-}
-
-/* Tối ưu riêng cho điện thoại để không bị vỡ hàng */
-@media (max-width: 600px) {
-    .toolbar-row {
-        padding: 0 5px;
-    }
-    
-    .toolbar-row button {
-        flex: 0 1 auto; /* Nút chỉ to vừa đủ chứa chữ */
-        font-size: 12px;
-        padding: 6px 8px;
-    }
-
-    #chapter-select, #section-select {
-        flex: 1; /* Ô chọn chiếm phần không gian còn lại */
-        height: 32px;
-    }
-}
+        .top-toolbar {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background-color: #333333 !important;
+            border-bottom: 2px solid #1a1a1a;
+            padding: 8px 5px;
+            display: flex; flex-direction: column; gap: 8px; /* Ép các nút xếp thành 2 dòng */
+            z-index: 1000; box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+           font-family: sans-serif; box-sizing: border-box;
+        }
 
 /* 1. Ép tất cả các phần tử trong mỗi dòng (row) tụ lại ở chính giữa */
 .toolbar-row {
     display: flex;
     justify-content: center;  /* Kéo tất cả vào giữa */
     align-items: center;      /* Căn giữa theo chiều dọc */
-    gap: 8px;                 /* Tạo khoảng cách đều nhau 8px giữa các nút */
-    margin-bottom: 10px;      /* Khoảng cách giữa dòng trên và dòng dưới */
+    gap: 0px;                 /* Tạo khoảng cách đều nhau 8px giữa các nút */
+    margin-bottom: 0px;      /* Khoảng cách giữa dòng trên và dòng dưới */
     flex-wrap: wrap;          /* Tự động rớt dòng nếu xem trên điện thoại màn hình nhỏ */
 }
 
 /* 2. Thu nhỏ cả 2 thanh Mục lục chính và Mục 1/11 */
 #chapter-select, #section-select {
     width: auto;              /* Chiều rộng vừa đủ với chữ bên trong */
-    max-width: 250px;         /* Không bao giờ được dài quá 250px */
+    max-width: 210px;         /* Không bao giờ được dài quá 250px */
     flex: none;               /* Tuyệt đối không cho phép tự động giãn */
     padding: 5px 10px;        /* Tạo độ dày cho thanh chọn đẹp hơn giống ảnh 3 */
 }
@@ -269,34 +229,6 @@
     font-size: 15px;
     opacity: 0.8; /* Làm chữ mờ đi một chút để không tranh giành sự chú ý với nội dung truyện */
     clear: both;
-    @media (max-width: 600px) {
-    /* 1. Làm dòng menu cao hơn và thoáng hơn */
-    .toolbar-row {
-        padding: 10px 5px; /* Tăng khoảng cách trên dưới */
-        gap: 8px; /* Khoảng cách giữa các nút bấm */
-    }
-
-    /* 2. Làm các nút bấm (Trước, Sau, A+, A-) to ra đáng kể */
-    .toolbar-row button {
-        padding: 12px 15px; /* Tăng vùng bấm cho ngón tay */
-        font-size: 16px;    /* Chữ trên nút to hơn */
-        min-width: 60px;    /* Đảm bảo nút không bị quá bé */
-    }
-
-    /* 3. Làm các ô chọn (Mục lục, Phân mục) to và dễ đọc */
-    #chapter-select, #section-select {
-        height: 45px;       /* Chiều cao ô chọn to hơn */
-        font-size: 16px;    /* Chữ bên trong to rõ */
-        padding: 5px;
-        flex: 1;            /* Cho phép ô chọn chiếm không gian tối đa */
-        max-width: none;    /* Bỏ giới hạn để nó tràn vừa màn hình */
-    }
-
-    /* 4. Đẩy nội dung truyện xuống thấp hơn nữa để không bị menu to đè vào */
-    body {
-        padding-top: 160px !important; 
-    }
-}
 }
     </style>
 </head>
@@ -304,7 +236,7 @@
 <body>
 <div class="top-toolbar">
         <div class="toolbar-row">
-            <button id="btn-prev" onclick="goToPrev()">&#9664; Trước</button>
+            <button id="btn-prev" onclick="goToPrev()">&#9664;</button>
         <select id="chapter-select" onchange="jumpToChapter()">
             <option value="index.html">Mục lục</option>
             <option value="Chapter-1.html">1. Thư hồi âm trong hộp nhận sữa</option>
@@ -313,7 +245,7 @@
             <option value="Chapter-4.html">4. Mặc niệm bằng nhạc The Beatles</option>
             <option value="Chapter-5.html">5. Cầu nguyện từ trên trời cao</option>
         </select>
-            <button id="btn-next" onclick="goToNext()">Sau &#9654;</button>
+            <button id="btn-next" onclick="goToNext()">&#9654;</button>
         </div>
         
         <div class="toolbar-row">
@@ -1102,7 +1034,6 @@
         Bản dịch thuộc về PHANTOM
     </div>
 </body>
-
 
 
 </html>
