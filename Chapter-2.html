@@ -37,7 +37,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             display: none; /* Mặc định ẩn */
-            max-height: 250px; /* Nếu nhiều mục quá thì cho cuộn */
+            max-height: 210px; /* Nếu nhiều mục quá thì cho cuộn */
             overflow-y: auto;
             width: 120px;
            font-family: sans-serif;
@@ -107,8 +107,8 @@
     display: flex;
     justify-content: center;  /* Kéo tất cả vào giữa */
     align-items: center;      /* Căn giữa theo chiều dọc */
-    gap: 8px;                 /* Tạo khoảng cách đều nhau 8px giữa các nút */
-    margin-bottom: 10px;      /* Khoảng cách giữa dòng trên và dòng dưới */
+    gap: 0px;                 /* Tạo khoảng cách đều nhau 8px giữa các nút */
+    margin-bottom: 0px;      /* Khoảng cách giữa dòng trên và dòng dưới */
     flex-wrap: wrap;          /* Tự động rớt dòng nếu xem trên điện thoại màn hình nhỏ */
 }
 
@@ -236,7 +236,7 @@
 <body>
 <div class="top-toolbar">
         <div class="toolbar-row">
-            <button id="btn-prev" onclick="goToPrev()">&#9664; Trước</button>
+            <button id="btn-prev" onclick="goToPrev()">&#9664;</button>
         <select id="chapter-select" onchange="jumpToChapter()">
             <option value="index.html">Mục lục</option>
             <option value="Chapter-1.html">1. Thư hồi âm trong hộp nhận sữa</option>
@@ -245,7 +245,7 @@
             <option value="Chapter-4.html">4. Mặc niệm bằng nhạc The Beatles</option>
             <option value="Chapter-5.html">5. Cầu nguyện từ trên trời cao</option>
         </select>
-            <button id="btn-next" onclick="goToNext()">Sau &#9654;</button>
+            <button id="btn-next" onclick="goToNext()">&#9654;</button>
         </div>
         
         <div class="toolbar-row">
